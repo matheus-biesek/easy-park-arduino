@@ -130,7 +130,3 @@ void loop() {
 ```
 
 Dessa forma, o código principal fica mais limpo e organizado, facilitando sua compreensão e expansão.
-
----
-
-Este README fornece uma visão detalhada da parte física do sistema de estacionamento, incluindo a implementação orientada a objetos para facilitar a escalabilidade e manutenção futura.
