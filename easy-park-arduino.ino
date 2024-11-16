@@ -42,7 +42,7 @@ class Serial2Data {
     else if (receivedData.startsWith("gateOneStatus:")) {
       String status = receivedData.substring(receivedData.indexOf(':') + 1);
       status.trim();
-      setGateOneStatus(status.equalsIgnoreCase("true"));
+      setGateOneStatus(status.equalsIgnoreCase("True"));
       Serial.println("Status da cancela recebido: " + String(getGateOneStatus()));
     } 
     else {
@@ -129,6 +129,7 @@ class SensorUltrassonic {
   }
 };
 
+// criar um metodo para o start da cancela, verificando o status atual.
 class ServoGate {
   private:
   Servo servo;
@@ -140,12 +141,12 @@ class ServoGate {
   bool status;
 
   public:
-  ServoGate(int pin, int openPos, int closedPos, int posit) 
-    : pin(pin), openPosition(openPos), closedPosition(closedPos), isOpen(false), position(posit) {}
+  ServoGate(int pin, int openPos, int closedPos) 
+    : pin(pin), openPosition(openPos), closedPosition(closedPos), isOpen(false) {}
 
   void initialize() {
     servo.attach(pin);
-    close();
+    open();
   }
 
   void setStatus(bool statusSend){
@@ -269,7 +270,7 @@ SensorUltrassonic sensorTwo(9, 8, 5, 6, 2);
 
 Display7Segment displaySegmentsVacancy(22, 24, 26, 28, 30, 32, 34);
 
-ServoGate servoGateOne(10, 90, 0, 1);
+ServoGate servoGateOne(10, 90, 0);
 
 LCDPanel lcdPanelOne(0x27, 16, 2);
 
